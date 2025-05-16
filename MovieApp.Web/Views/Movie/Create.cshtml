@@ -1,34 +1,36 @@
-﻿@model MovieApp.Web.ViewModels.MovieCreateViewModel
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@model MovieCreateViewModel
 
-<!DOCTYPE html>
-    <html>
-    <head>
-        <title>Add Movie</title>
-    <link rel="stylesheet" href="https://unpkg.com/@@picocss/pico@@latest/css/pico.classless.min.css" />
-    </head>
-    <body>
-    <h1>Add Movie</h1>
-    <form asp-controller="Movie" asp-action="create" enctype="multipart/form-data">
-        <div class="container">
-            <label asp-for="@Model.Title"></label>
-            <input asp-for="@Model.Title" />
-            <span asp-validation-for="@Model.Title"></span>
-            <label asp-for="@Model.Genre"></label>
-            <input asp-for="@Model.Genre" />
-            <span asp-validation-for="@Model.Genre"></span>
-            <label asp-for="@Model.ReleaseYear"></label>
-            <input asp-for="@Model.ReleaseYear" />
-            <span asp-validation-for="@Model.ReleaseYear"></span>
-            <label asp-for="@Model.VideoIdentifier"></label>
-            <input asp-for="@Model.VideoIdentifier" />
-            <span asp-validation-for="@Model.VideoIdentifier"></span>
-            <label asp-for="@Model.PosterIdentifier"></label>
-            <input asp-for="@Model.PosterIdentifier" />
-            <span asp-validation-for="@Model.PosterIdentifier"></span>
-            <button type="submit">Add Movie</button>
-        </div>
-    </form> 
+@{
+ViewData["Title"] = "Add Movie";
+}
+
+<form asp-controller="Movie" asp-action="create" enctype="multipart/form-data">
+    <div>
+        <label asp-for="@Model.Title"></label>
+        <input asp-for="@Model.Title" />
+        <span asp-validation-for="@Model.Title"></span>
+
+        <label asp-for="@Model.Genre"></label>
+        <input asp-for="@Model.Genre" />
+        <span asp-validation-for="@Model.Genre"></span>
+
+        <label asp-for="@Model.ReleaseYear"></label>
+        <input asp-for="@Model.ReleaseYear" type="number" min="1900"/>
+        <span asp-validation-for="@Model.ReleaseYear"></span>
+
+        <label asp-for="@Model.VideoIdentifier"></label>
+        <input asp-for="@Model.VideoIdentifier" />
+        <span asp-validation-for="@Model.VideoIdentifier"></span>
+
+        <label asp-for="@Model.PosterIdentifier"></label>
+        <input asp-for="@Model.PosterIdentifier" />
+        <span asp-validation-for="@Model.PosterIdentifier"></span>
+
+        <button type="submit">Add Movie</button>
+    </div>
+</form> 
     
-    </body>
-    </html>
+<div>
+    <a href="@Url.Action(nameof(MovieController.Index))">Back to Movie List</a>
+</div>
+   

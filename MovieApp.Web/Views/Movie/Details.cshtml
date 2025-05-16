@@ -1,0 +1,15 @@
+﻿@model MovieDetailsViewModel
+@{
+    ViewData["Title"] = "Movie Details";
+}
+<div>
+    <a href="https://youtu.be/@Model.VideoIdentifier" target="_blank">
+        <img alt="Title" src="https://i.ytimg.com/vi_webp/@Model.PosterIdentifier/movieposter.webp" />
+    </a>
+    <h2>@Model.Title </h2>
+    <p>
+        <span><strong>Release Year:</strong> @Model.ReleaseYear</span>
+        <br />
+        <span><strong>Genre:</strong> @Model.Genre</span>
+    </p>
+</div>

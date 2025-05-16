@@ -15,15 +15,24 @@ public class MovieController(IMovieService movieService) : Controller
     [HttpGet("movie/{id}")]
     public IActionResult Details(int id)
     {
+
         var movie = _movieService.GetMovieById(id);
         if (movie == null) return NotFound();
-        return View(movie);
+        var viewModel = new MovieDetailsViewModel
+        {
+            Title = movie.Title,
+            Genre = movie.Genre,
+            PosterIdentifier = movie.PosterIdentifier,
+            VideoIdentifier = movie.VideoIdentifier,
+            ReleaseYear = movie.ReleaseYear
+        };
+        return View(viewModel);
     }
 
-    [HttpGet("movie/create")]
+    [HttpGet("create")]
     public IActionResult Create() => View();
 
-    [HttpPost("movie/create")]
+    [HttpPost("create")]
     public IActionResult Create(MovieCreateViewModel newMovie)
     {
         if (!ModelState.IsValid) return View(newMovie);

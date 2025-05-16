@@ -23,6 +23,15 @@ public class MovieService : IMovieService
             PosterIdentifier = "AxBSbLzl66M",
             VideoIdentifier = "AxBSbLzl66M&pp=sAQB",
             ReleaseYear = 2024
+        },
+        new Movie
+        {
+            Id = 3,
+            Title = "Jönssonligan kommer tillbaka",
+            Genre = "Comedy",
+            PosterIdentifier = "MRtq60Tv95A",
+            VideoIdentifier = "MRtq60Tv95A&pp=sAQB",
+            ReleaseYear = 2024
         }
         ];
 
