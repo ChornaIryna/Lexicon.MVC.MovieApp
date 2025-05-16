@@ -1,6 +1,8 @@
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<MovieApp.Web.Interfaces.IMovieService, MovieApp.Web.Services.MovieService>();
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+app.MapControllers();
 
 app.Run();
