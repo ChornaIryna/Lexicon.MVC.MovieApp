@@ -4,5 +4,6 @@ builder.Services.AddSingleton<MovieApp.Web.Interfaces.IMovieService, MovieApp.We
 var app = builder.Build();
 
 app.MapControllers();
+app.UseStaticFiles();
 
 app.Run();

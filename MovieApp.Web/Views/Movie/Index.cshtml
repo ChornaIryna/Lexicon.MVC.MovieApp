@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Movie List";
  }
-
+ 
 <p>
     <a href="@Url.Action(nameof(MovieController.Create))">Add new movie</a>
 </p>
@@ -22,7 +22,6 @@
             <br />
             <span><strong>Genre:</strong> @movie.Genre</span>
             <hr />
-        </li>
-        
+        </li>        
     }
 </ul>
