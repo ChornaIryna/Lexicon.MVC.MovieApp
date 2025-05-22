@@ -2,9 +2,10 @@
 
 public class MovieDetailsViewModel
 {
-    public string Title { get; set; } = string.Empty;
-    public string Genre { get; set; } = string.Empty;
-    public string PosterIdentifier { get; set; } = string.Empty;
-    public string VideoIdentifier { get; set; } = string.Empty;
-    public int ReleaseYear { get; set; }
+    public required int Id { get; set; }
+    public required string Title { get; set; }
+    public required string Genre { get; set; }
+    public required string PosterIdentifier { get; set; }
+    public required string VideoIdentifier { get; set; }
+    public required int ReleaseYear { get; set; }
 }

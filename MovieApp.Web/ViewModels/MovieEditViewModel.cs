@@ -2,8 +2,9 @@
 
 namespace MovieApp.Web.ViewModels;
 
-public class MovieCreateViewModel
+public class MovieEditViewModel
 {
+    public required int Id { get; set; }
     [Required(ErrorMessage = "Title is Required")]
     [Display(Name = "Title", Prompt = "Enter Movie Title")]
     public required string Title { get; set; }

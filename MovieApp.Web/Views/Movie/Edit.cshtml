@@ -1,7 +1,7 @@
-﻿@model MovieCreateViewModel
+﻿@model MovieEditViewModel
 
 @{
-ViewData["Title"] = "Add Movie";
+ViewData["Title"] = "Edit Movie";
 }
 @section Scripts {
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.2/jquery.validate.min.js"
@@ -11,29 +11,29 @@ ViewData["Title"] = "Add Movie";
             asp-fallback-test="$.validator.unobtrusive"
             asp-fallback-src="~/scripts/lib/jquery/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>">
 }
-<form asp-controller="Movie" asp-action="create" enctype="multipart/form-data">
+<form asp-controller="Movie" asp-action="edit" enctype="multipart/form-data">
     <div>
         <label asp-for="@Model.Title"></label>
-        <input asp-for="@Model.Title" />
+        <input asp-for="@Model.Title" value="@Model.Title" />
         <span asp-validation-for="@Model.Title"></span>
 
         <label asp-for="@Model.Genre"></label>
-        <input asp-for="@Model.Genre" />
+        <input asp-for="@Model.Genre" value="@Model.Genre" />
         <span asp-validation-for="@Model.Genre"></span>
 
         <label asp-for="@Model.ReleaseYear"></label>
-        <input asp-for="@Model.ReleaseYear" type="number" min="1900"/>
+        <input asp-for="@Model.ReleaseYear" type="number" min="1900" value="@Model.ReleaseYear" />
         <span asp-validation-for="@Model.ReleaseYear"></span>
 
         <label asp-for="@Model.VideoIdentifier"></label>
-        <input asp-for="@Model.VideoIdentifier" />
+        <input asp-for="@Model.VideoIdentifier" value="@Model.VideoIdentifier" />
         <span asp-validation-for="@Model.VideoIdentifier"></span>
 
         <label asp-for="@Model.PosterIdentifier"></label>
-        <input asp-for="@Model.PosterIdentifier" />
+        <input asp-for="@Model.PosterIdentifier" value="@Model.PosterIdentifier" />
         <span asp-validation-for="@Model.PosterIdentifier"></span>
 
-        <button type="submit">Add Movie</button>
+        <button type="submit">Save Changes</button>
     </div>
     <div asp-validation-summary="All"></div>
 </form> 

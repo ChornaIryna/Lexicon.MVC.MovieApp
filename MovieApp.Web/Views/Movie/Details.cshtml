@@ -13,3 +13,8 @@
         <span><strong>Genre:</strong> @Model.Genre</span>
     </p>
 </div>
+<div>
+    <a asp-action="@nameof(MovieController.Edit)" asp-route-id="@Model.Id">Edit</a>
+    <a asp-action="@nameof(MovieController.Delete)" asp-route-id="@Model.Id">Delete</a>
+    <a href="@Url.Action(nameof(MovieController.Index))">Back to Movie List</a>
+</div>

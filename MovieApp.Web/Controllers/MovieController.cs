@@ -7,19 +7,32 @@ namespace MovieApp.Web.Controllers;
 
 public class MovieController(IMovieService movieService) : Controller
 {
-    private readonly IMovieService _movieService = movieService;
 
     [HttpGet("")]
-    public IActionResult Index() => View(new MovieListViewModel { Movies = _movieService.GetAllMovies() });
+    public IActionResult Index() =>
+        View(new MovieListViewModel
+        {
+            Movies = [.. movieService.GetAllMovies()
+                                                        .Select(m => new MovieViewModel
+                                                        {
+                                                            Id = m.Id,
+                                                            Title = m.Title,
+                                                            Genre = m.Genre,
+                                                            PosterIdentifier = m.PosterIdentifier,
+                                                            VideoIdentifier = m.VideoIdentifier,
+                                                            ReleaseYear = m.ReleaseYear,
+                                                        })]
+        });
 
     [HttpGet("movie/{id}")]
     public IActionResult Details(int id)
     {
 
-        var movie = _movieService.GetMovieById(id);
+        var movie = movieService.GetMovieById(id);
         if (movie == null) return NotFound();
         var viewModel = new MovieDetailsViewModel
         {
+            Id = movie.Id,
             Title = movie.Title,
             Genre = movie.Genre,
             PosterIdentifier = movie.PosterIdentifier,
@@ -45,8 +58,51 @@ public class MovieController(IMovieService movieService) : Controller
             VideoIdentifier = newMovie.VideoIdentifier,
             ReleaseYear = newMovie.ReleaseYear
         };
-        _movieService.AddMovie(movie);
+        movieService.AddMovie(movie);
 
+        return RedirectToAction(nameof(Index));
+    }
+
+    [HttpGet("edit/{id}")]
+    public IActionResult Edit(int id)
+    {
+        var movie = movieService.GetMovieById(id);
+        if (movie == null) return NotFound();
+        var viewModel = new MovieEditViewModel
+        {
+            Id = movie.Id,
+            Title = movie.Title,
+            Genre = movie.Genre,
+            PosterIdentifier = movie.PosterIdentifier,
+            VideoIdentifier = movie.VideoIdentifier,
+            ReleaseYear = movie.ReleaseYear
+        };
+        return View(viewModel);
+    }
+
+    [HttpPost("edit/{id}")]
+    public IActionResult Edit(int id, MovieEditViewModel updatedMovie)
+    {
+        if (!ModelState.IsValid) return View(updatedMovie);
+        var movie = movieService.GetMovieById(id);
+        if (movie == null) return NotFound();
+
+        movie.Title = updatedMovie.Title;
+        movie.Genre = updatedMovie.Genre;
+        movie.PosterIdentifier = updatedMovie.PosterIdentifier;
+        movie.VideoIdentifier = updatedMovie.VideoIdentifier;
+        movie.ReleaseYear = updatedMovie.ReleaseYear;
+
+        movieService.UpdateMovie(movie);
+        return RedirectToAction(nameof(Index));
+    }
+
+    [HttpGet("delete/{id}")]
+    public IActionResult Delete(int id)
+    {
+        var movie = movieService.GetMovieById(id);
+        if (movie == null) return NotFound();
+        movieService.DeleteMovie(id);
         return RedirectToAction(nameof(Index));
     }
 }
