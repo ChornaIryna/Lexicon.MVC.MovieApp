@@ -1,19 +1,15 @@
 ﻿@{
-    ViewBag.Title = "Error occurred ";
+    ViewData["Title"] = "Error";
 }
 
-<div class="container text-center py-5">
-    <h1 class="display-1 text-danger">Error occurred</h1>
-
-    <div class="mt-5">
-        <h3>Vad kan du göra?</h3>
-        <ul class="list-unstyled">
-            <li>
-                <i class="fas fa-arrow-left me-2"></i> Gå tillbaka till <a href="javascript:history.back()">föregående sida</a>.
-            </li>
-            <li>
-                <i class="fas fa-envelope me-2"></i> Kontakta oss om du behöver hjälp: <a href="mailto:support@fakedoman.se">support@fakedoman.se</a>
-            </li>
-        </ul>
+<div class="container">
+    <div class="error-container error-general">
+        <h1>Oops!</h1>
+        <h2>An error occurred while processing your request.</h2>
+        <p>
+            We're sorry, but something went wrong. Please try again later.
+        </p>
+        <a href="/" class="btn btn-primary btn-lg">Return to Home</a> 
+        <a href="javascript:history.back()" class="btn btn-outline-primary btn-lg">Back to Previous Page</a>
     </div>
 </div>

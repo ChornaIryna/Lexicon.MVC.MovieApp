@@ -1,7 +1,7 @@
 ﻿@model MovieCreateViewModel
 
 @{
-ViewData["Title"] = "Add Movie";
+ViewData["Title"] = "Add New Movie";
 }
 @section Scripts {
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.2/jquery.validate.min.js"
@@ -9,36 +9,63 @@ ViewData["Title"] = "Add Movie";
             asp-fallback-src="~/scripts/lib/jquery/jquery-validate/jquery.validate.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"
             asp-fallback-test="$.validator.unobtrusive"
-            asp-fallback-src="~/scripts/lib/jquery/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>">
+            asp-fallback-src="~/scripts/lib/jquery/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 }
-<form asp-controller="Movie" asp-action="create" enctype="multipart/form-data">
+<div class="container">
     <div>
-        <label asp-for="@Model.Title"></label>
-        <input asp-for="@Model.Title" />
-        <span asp-validation-for="@Model.Title"></span>
-
-        <label asp-for="@Model.Genre"></label>
-        <input asp-for="@Model.Genre" />
-        <span asp-validation-for="@Model.Genre"></span>
-
-        <label asp-for="@Model.ReleaseYear"></label>
-        <input asp-for="@Model.ReleaseYear" type="number" min="1900"/>
-        <span asp-validation-for="@Model.ReleaseYear"></span>
-
-        <label asp-for="@Model.VideoIdentifier"></label>
-        <input asp-for="@Model.VideoIdentifier" />
-        <span asp-validation-for="@Model.VideoIdentifier"></span>
-
-        <label asp-for="@Model.PosterIdentifier"></label>
-        <input asp-for="@Model.PosterIdentifier" />
-        <span asp-validation-for="@Model.PosterIdentifier"></span>
-
-        <button type="submit">Add Movie</button>
+        <a href="@Url.Action(nameof(MovieController.Index))" class="btn btn-outline-primary">Back to Movie List</a>
     </div>
-    <div asp-validation-summary="All"></div>
-</form> 
-    
-<div>
-    <a href="@Url.Action(nameof(MovieController.Index))">Back to Movie List</a>
+    <div class="card add-movie-form-container">
+        <h2>Fill Movie Form</h2>
+
+        <form asp-controller="Movie" asp-action="create" enctype="multipart/form-data">
+            <div class="form-horizontal">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="@Model.Title" class="control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="@Model.Title" class="form-control" />
+                        <span asp-validation-for="@Model.Title" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.Genre" class="control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="@Model.Genre" class="form-control" />
+                        <span asp-validation-for="@Model.Genre" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.ReleaseYear" class="control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="@Model.ReleaseYear" type="number" min="1900" class="form-control"  />
+                        <span asp-validation-for="@Model.ReleaseYear" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.VideoIdentifier" class="control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="@Model.VideoIdentifier" class="form-control" />
+                        <span asp-validation-for="@Model.VideoIdentifier" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.PosterIdentifier" class="control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="@Model.PosterIdentifier" class="form-control"  />
+                        <span asp-validation-for="@Model.PosterIdentifier" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Add Movie</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
+    
    

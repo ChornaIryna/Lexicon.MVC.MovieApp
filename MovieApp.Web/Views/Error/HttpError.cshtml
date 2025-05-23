@@ -2,21 +2,14 @@
 @{
     ViewData["Title"] = "Error";
 }
-<div class="container text-center py-5">
-    <h1 class="display-1 text-danger">@Model</h1>
-    <p class="lead">
-        Vi är ledsna, men sidan du letar efter verkar inte finnas. Den kan ha flyttats, tagits bort, eller så stavade du fel.
-    </p>
 
-    <div class="mt-5">
-        <h3>Vad kan du göra?</h3>
-        <ul class="list-unstyled">
-            <li>
-                <i class="fas fa-arrow-left me-2"></i> Gå tillbaka till <a href="javascript:history.back()">föregående sida</a>.
-            </li>
-            <li>
-                <i class="fas fa-envelope me-2"></i> Kontakta oss om du behöver hjälp: <a href="mailto:support@fakedoman.se">support@fakedoman.se</a>
-            </li>
-        </ul>
+<div class="container">
+    <div class="error-container error-404">
+        <h1>@Model</h1>
+        <p>
+            The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+        </p>
+        <a href="/" class="btn btn-primary btn-lg">Return to Home</a>
+        <a href="javascript:history.back()" class="btn btn-outline-primary btn-lg">Back to Previous Page</a>
     </div>
 </div>

@@ -24,7 +24,7 @@ public class MovieController(IMovieService movieService) : Controller
                                                         })]
         });
 
-    [HttpGet("movie/{id}")]
+    [HttpGet("/movie/{id}")]
     public IActionResult Details(int id)
     {
 
